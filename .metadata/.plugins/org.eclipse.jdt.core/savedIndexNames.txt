@@ -1,0 +1,26 @@
+INDEX VERSION 1.134+/Users/wannasan/Documents/java-jdc/java-project-backup/.metadata/.plugins/org.eclipse.jdt.core
+478753990.index
+1559161144.index
+4257806351.index
+1865797976.index
+4194373221.index
+1099867416.index
+2879030218.index
+1394855793.index
+3205472302.index
+2346368842.index
+1786420194.index
+982787108.index
+2469289923.index
+1887200353.index
+3529915949.index
+2468116559.index
+251317051.index
+2042180681.index
+4278866743.index
+552039667.index
+3222910155.index
+3737745745.index
+3831132580.index
+2103058622.index
+255316938.index

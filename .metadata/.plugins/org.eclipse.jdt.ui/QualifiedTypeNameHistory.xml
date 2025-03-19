@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.jdc.console.app.ConsoleApplication"/>
+    <fullyQualifiedTypeName name="com.jdc.console.app.AbstractFeature"/>
+    <fullyQualifiedTypeName name="com.jdc.console.app.UserInputs"/>
+    <fullyQualifiedTypeName name="com.wanna.calculator.feature.FeatureForSubstaction"/>
+</qualifiedTypeNameHistroy>
