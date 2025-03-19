@@ -17,10 +17,13 @@ public class ConsoleApplication {
 			
 			var feature = getUserSelectedFeatures();
 			
+			System.out.println();
+			
 			feature.showMenu();
 			
+			System.out.println();
 			feature.doBusiness();
-			 
+			
 			
 		}while(AskToDoAgain());
 		
@@ -38,7 +41,8 @@ public class ConsoleApplication {
 		
 		var selectedId = UserInputs.readInt("Feature Id: ");
 		
-		return null;
+		return features[selectedId -1 ];
+		
 	}
 
 	private void showMessage(String message) {

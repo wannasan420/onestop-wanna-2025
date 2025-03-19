@@ -1,42 +1,21 @@
 package com.wanna.calculator.feature;
 
-import com.wanna.console.app.*;
-
-public class FeatureForAdding extends AbstractFeature{
+public class FeatureForAdding extends AbstractCalculation{
 
 	public FeatureForAdding(int id) {
-		super(id, "Plus Calculation ");
+		super(id, "Plus Feature ");
+		
 	}
-
+	
+	
 	@Override
-	public void doBusiness() {
-				
-		
-		int first = getFirstNumber();
-		
-		int second = getSecondNumber();
-		
-		doAddingAndShowResult(first,second);
-	}
-
-	private void doAddingAndShowResult(int first, int second) {
-		
-		int result = first + second;
-		
-		System.out.printf("%d + %d = %d ",first,second,result);
-		
+	public void doAddingAndShowResult(int first, int second) {
+		System.out.printf("%d + %d = %d ",first,second,first+second);
 		
 	}
 
-	private int getSecondNumber() {
-		
-		return  UserInputs.readInt("Second Digit : ");
-	}
-
-	private int getFirstNumber() {
-		
-		return UserInputs.readInt("First Digit : ");
-	}
+	
+	
 
 	
 
