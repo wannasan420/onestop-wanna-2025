@@ -11,24 +11,19 @@ import com.wanna.console.app.ConsoleApplication;
 public class CalculatorApplication {
 
 	public static void main(String[] args) {
-		var features = new AbstractFeature[] {
+		
+		
+		var app = new ConsoleApplication("Calculator App",
 				new FeatureForAdding(1),
 				new FeatureForSubstraction(2),
 				new FeatureForMultiplication(3),
 				new FeatureForDivision(4),
 				new AbstractCalculation(5,"Modulus Calculation") {
-					
 					@Override
 					public void doAddingAndShowResult(int first, int second) {
 						System.out.printf("%d %% %d = %d",first,second,first%second);
-						
 					}
-				}
-		};
-		
-		var app = new ConsoleApplication("Calculator App", features);
-		
+		});
 		app.launch();
 	}
-	
 }

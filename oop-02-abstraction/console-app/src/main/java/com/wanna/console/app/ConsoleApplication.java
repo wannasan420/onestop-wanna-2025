@@ -5,7 +5,7 @@ public class ConsoleApplication {
 	private String AppName;
 	private AbstractFeature[] features;
 	
-	public ConsoleApplication(String appName, AbstractFeature[] features) {
+	public ConsoleApplication(String appName, AbstractFeature... features) {
 		super();
 		AppName = appName;
 		this.features = features;
@@ -17,8 +17,8 @@ public class ConsoleApplication {
 			
 			var feature = getUserSelectedFeatures();
 			
-			System.out.println();
-			
+			System.out.println(); 
+			 
 			feature.showMenu();
 			
 			System.out.println();
@@ -32,14 +32,14 @@ public class ConsoleApplication {
 	
 	private AbstractFeature getUserSelectedFeatures() {
 		
-		System.out.println("Please Choose One Option : ");
+		System.out.println("Please select menu : ");
 		
 		for(var feature : features) {
 			 
-			feature.showMenu();
+			feature.showMenu();   
 		}
-		
-		var selectedId = UserInputs.readInt("Feature Id: ");
+		System.out.println();
+		var selectedId = UserInputs.readInt("Feature Id : ");
 		
 		return features[selectedId -1 ];
 		
@@ -47,9 +47,9 @@ public class ConsoleApplication {
 
 	private void showMessage(String message) {
 		
-		System.out.println("==============");
+		System.out.println("======================================");
 		System.out.println(message);
-		System.out.println("==============");
+		System.out.println("======================================");
 		System.out.println();
 		
 	}
