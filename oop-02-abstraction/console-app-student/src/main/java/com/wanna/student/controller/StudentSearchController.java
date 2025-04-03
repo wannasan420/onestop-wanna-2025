@@ -2,7 +2,6 @@ package com.wanna.student.controller;
 
 import com.wanna.console.app.UserInputs;
 import com.wanna.console.app.component.TableView;
-import com.wanna.console.app.component.TableViewModel;
 import com.wanna.student.controller.adaptor.StudentOutputTableViewAdaptor;
 import com.wanna.student.model.StudentModel;
 import com.wanna.student.model.StudentOutput;

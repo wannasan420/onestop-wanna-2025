@@ -4,24 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jdc.practice</groupId>
 	<artifactId>oop-02-abstraction</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>pom</packaging>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
+			<artifactId>junit-jupiter</artifactId>
 			<version>5.12.0</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>5.12.0</version>
-			<scope>test</scope>
-		</dependency>
-
+		
 	</dependencies>
 
 	<build>
@@ -36,10 +30,29 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.jdc.practice</groupId>
+				<artifactId>console-app</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdc.practice</groupId>
+				<artifactId>console-app-calculator</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdc.practice</groupId>
+				<artifactId>console-app-student</artifactId>
+				<version>$p${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<modules>
 		<module>console-app</module>
 		<module>console-app-calculator</module>
-		<module>console.app.student</module>
 		<module>console-app-student</module>
 	</modules>
 </project>

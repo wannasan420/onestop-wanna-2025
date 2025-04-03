@@ -30,7 +30,7 @@ public class StudentModelImpl implements StudentModel {
 			firstNode.add(newNode);
 		}
 		
-		return student.output(); 
+		return student.output();  
 	}
 
 	@Override

@@ -1,0 +1,6 @@
+com/wanna/console/app/AbstractFeature.class
+com/wanna/console/app/ConsoleApplication.class
+com/wanna/console/app/UserInputs.class
+com/wanna/console/app/component/TableViewModel.class
+com/wanna/console/app/component/TableView.class
+com/wanna/console/app/component/Drawable.class
