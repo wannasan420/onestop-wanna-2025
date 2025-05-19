@@ -20,3 +20,4 @@ public abstract class AbstractFieldValidator implements FieldValidator {
 		return field.getType() == String.class;
 	}
 }
+ 

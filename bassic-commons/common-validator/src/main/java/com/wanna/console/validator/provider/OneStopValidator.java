@@ -15,6 +15,7 @@ public class OneStopValidator implements Validator {
 	public OneStopValidator(FieldValidator ... validators) {
 		super();
 		this.validators = validators;
+		
 	}
 
 

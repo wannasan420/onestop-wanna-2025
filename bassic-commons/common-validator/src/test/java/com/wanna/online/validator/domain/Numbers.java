@@ -27,4 +27,5 @@ public class Numbers {
 	@MinValue(value=10)
 	@MaxValue(value=100)
 	private long longValue;
+	
 }

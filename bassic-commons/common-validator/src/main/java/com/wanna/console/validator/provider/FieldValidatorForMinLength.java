@@ -20,7 +20,7 @@ public class FieldValidatorForMinLength extends AbstractFieldValidator {
 				if(value == null || isViolate(value, annotation)) {
 					
 					return new FieldError(field.getName(),annotation.message());
-				}
+				} 
 			}
 			
 		} catch (Exception e) {

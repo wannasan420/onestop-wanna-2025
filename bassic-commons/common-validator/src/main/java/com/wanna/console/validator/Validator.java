@@ -21,7 +21,7 @@ public interface Validator {
 			new FieldValidatorForMinValue(),
 			new FieldValidatorForNotBlank(),
 			new FieldValidatorForNotNull()
-
+ 
 		);
 	}
 }

@@ -30,6 +30,7 @@ public class StringValidatorTest {
 		
 		var result = validator.validate(input);
 		assertFalse(result.hasErrors());
+		
 	}
 	   
 	@ParameterizedTest

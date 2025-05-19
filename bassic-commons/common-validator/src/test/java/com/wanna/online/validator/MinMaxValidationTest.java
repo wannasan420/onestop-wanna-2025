@@ -27,6 +27,7 @@ public class MinMaxValidationTest {
 		var result = validator.validate(input);
 		
 		assertFalse(result.hasErrors());
+		
 	}
 	
 	@ParameterizedTest
