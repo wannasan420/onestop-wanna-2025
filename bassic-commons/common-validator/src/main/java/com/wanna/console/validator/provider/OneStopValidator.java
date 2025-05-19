@@ -12,10 +12,11 @@ public class OneStopValidator implements Validator {
 
 	private FieldValidator[] validators;
 
-	public OneStopValidator(FieldValidator[] validators) {
+	public OneStopValidator(FieldValidator ... validators) {
 		super();
 		this.validators = validators;
 	}
+
 
 	@Override
 	public ValidationResult validate(Object data) {
@@ -31,7 +32,7 @@ public class OneStopValidator implements Validator {
 				
 				if(null != error) {
 					
-					errors =  Arrays.copyOf(errors, errors.length);
+					errors =  Arrays.copyOf(errors, errors.length + 1);
 					errors[errors.length - 1] = error;
 				}
 			}

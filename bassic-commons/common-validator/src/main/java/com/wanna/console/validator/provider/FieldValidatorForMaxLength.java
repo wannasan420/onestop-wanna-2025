@@ -31,12 +31,13 @@ public class FieldValidatorForMaxLength extends AbstractFieldValidator {
 		return null;
 	}
 
-	private boolean isViolate(Object value, MaxLength annotation) {
-		
-		if(!(value instanceof String str)) {
-			return true;
+	private boolean isViolate(Object data, MaxLength annotation) {
+		if(data instanceof String str) {
+			return str.length() > annotation.value();
 		}
-		return str.length() > annotation.value();
+		
+		
+		return false;
 	}
 
 }

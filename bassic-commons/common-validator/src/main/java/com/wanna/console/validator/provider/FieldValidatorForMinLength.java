@@ -36,7 +36,7 @@ public class FieldValidatorForMinLength extends AbstractFieldValidator {
 			return str.length() < annotation.value();
 		}
 		
-		return true;
+		return false;
 	}
 	
 

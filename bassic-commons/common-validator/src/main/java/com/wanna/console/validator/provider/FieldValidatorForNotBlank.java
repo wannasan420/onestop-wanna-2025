@@ -36,7 +36,7 @@ public class FieldValidatorForNotBlank extends AbstractFieldValidator{
 			return str.isBlank(); 
 		}
 		
-		return true;
+		return false;
 	}
 	
 

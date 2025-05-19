@@ -9,35 +9,42 @@ public class FieldValidatorForMinValue extends AbstractFieldValidator {
 
 	@Override
 	public FieldError validate(Field field, Object object) {
+		
 		try {
 			var annotation = field.getDeclaredAnnotation(MinValue.class);
 			
-			if(annotation != null && isNumberType(field)) {
+			if(null != annotation && isNumberType(field)) {
 				
 				field.setAccessible(true);
 				var value = field.get(object);
 				
-				if(value != null && isViolate(value, annotation)) {
-					
-					return new FieldError(field.getName(),annotation.message());
+				if(null != value && isViolate(value, annotation)) {
+					return new FieldError(field.getName(), annotation.message());
 				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return null;
 	}
 
-	private boolean isViolate(Object value, MinValue annotation) {
+	private boolean isViolate(Object data, MinValue annotation) {
 		
-		if(value instanceof Long longValue) {
-			
-			return longValue < annotation.value();
+		if(data instanceof Byte value) {
+			return value < annotation.value();
 		}
-		
-		return true;
+
+		if(data instanceof Short value) {
+			return value < annotation.value();
+		}
+
+		if(data instanceof Integer value) {
+			return value < annotation.value();
+		}
+
+		return (Long)data < annotation.value();
 	}
-	
 
 }
