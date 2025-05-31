@@ -12,5 +12,5 @@ public class FeatureForDivision extends AbstractCalculation {
 		System.out.printf("%d / %d = %d ",first,second,first/second);
 		
 	}
-
+ 
 }

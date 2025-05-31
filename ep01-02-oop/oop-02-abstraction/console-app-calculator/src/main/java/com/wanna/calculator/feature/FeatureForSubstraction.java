@@ -16,3 +16,4 @@ public class FeatureForSubstraction extends AbstractCalculation{
 	
 
 }
+ 

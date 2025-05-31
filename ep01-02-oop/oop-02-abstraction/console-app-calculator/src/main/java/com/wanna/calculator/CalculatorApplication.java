@@ -27,3 +27,4 @@ public class CalculatorApplication {
 		app.launch();
 	}
 }
+ 

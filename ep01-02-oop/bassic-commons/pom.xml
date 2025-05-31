@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jdc.practice</groupId>
-	<artifactId>bassic-commons</artifactId>
+	<artifactId>basic-commons</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
@@ -30,6 +30,22 @@
 		</dependency>
 	</dependencies>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>common-validator</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>common-console</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -45,5 +61,6 @@
 
 	<modules>
 		<module>common-validator</module>
+		<module>common-console</module>
 	</modules>
 </project>

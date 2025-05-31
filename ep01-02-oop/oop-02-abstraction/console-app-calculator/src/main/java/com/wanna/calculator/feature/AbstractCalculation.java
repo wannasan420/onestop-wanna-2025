@@ -11,11 +11,11 @@ public abstract class AbstractCalculation extends AbstractFeature {
 	}
 
 	@Override
-	public void doBusiness() {
+	public void doBusiness() { 
 
 		int first = getFirstNumber();
 
-		int second = getSecondNumber();
+		int second = getSecondNumber(); 
 
 		doAddingAndShowResult(first, second);
 	}
