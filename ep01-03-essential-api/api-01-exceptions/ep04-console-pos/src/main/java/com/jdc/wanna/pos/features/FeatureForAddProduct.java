@@ -14,7 +14,7 @@ public class FeatureForAddProduct extends AbstractFeature{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	@Override 
 	public void doBusiness() {
 		
 		var name = UserInputs.readString(SIZE, "Name");

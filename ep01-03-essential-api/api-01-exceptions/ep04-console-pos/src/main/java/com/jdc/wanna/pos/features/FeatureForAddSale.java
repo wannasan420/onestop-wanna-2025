@@ -1,8 +1,6 @@
 package com.jdc.wanna.pos.features;
 
-import com.jdc.wanna.pos.model.ProductModel;
 import com.wanna.console.app.AbstractFeature;
-import com.wanna.console.app.UserInputs;
 
 public class FeatureForAddSale extends AbstractFeature {
 
@@ -12,10 +10,8 @@ public class FeatureForAddSale extends AbstractFeature {
 
 	@Override
 	public void doBusiness() {
+		// TODO Auto-generated method stub
 		
-		var name = UserInputs.readString("Name");
-		
-		var products = ProductModel.getInstance().search(name);
 	}
 
 }

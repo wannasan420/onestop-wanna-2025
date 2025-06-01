@@ -8,7 +8,7 @@ public class FeatureForSaleDetails extends AbstractFeature {
 		super(id, "Sale Details");
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	@Override
 	public void doBusiness() {
 		// TODO Auto-generated method stub
