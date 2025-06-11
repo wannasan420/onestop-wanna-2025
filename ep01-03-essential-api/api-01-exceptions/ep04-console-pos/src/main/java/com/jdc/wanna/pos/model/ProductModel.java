@@ -9,7 +9,9 @@ public interface ProductModel {
 		return ProductModelImpl.getInstance();
 	}
 
-	int create(ProductForm form);
+	int create(ProductForm form); 
 
 	Product[] search(String name);
+
+	Product findById(int id);
 }

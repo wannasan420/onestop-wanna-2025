@@ -13,11 +13,12 @@ public class PosApplication {
 		
 		var application = new ConsoleApplication("Console POS", 
 				new FeatureForAddProduct(1),
-				new FeatureForAddSale(2),
-				new FeatureForSaleDetails(3),
-				new FeatureForSearchProduct(4),
-				new FeatureForSearchSale(5));
+				new FeatureForSearchProduct(2),
+				new FeatureForAddSale(3),
+				new FeatureForSearchSale(4),
+				new FeatureForSaleDetails(5));
+				
 		
-		application.launch();
+		application.launch(); 
 	}
 }

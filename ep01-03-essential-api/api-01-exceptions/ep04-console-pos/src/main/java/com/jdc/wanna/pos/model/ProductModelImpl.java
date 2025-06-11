@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.jdc.wanna.pos.model.input.ProductForm;
 import com.jdc.wanna.pos.model.output.Product;
+import com.wanna.console.app.exceptions.BusinessException;
 
 public class ProductModelImpl extends AbstractModel implements ProductModel{
 
@@ -32,7 +33,7 @@ public class ProductModelImpl extends AbstractModel implements ProductModel{
 		data[data.length - 1] = product;
 		
 		return ID;
-	}
+	} 
 
 	@Override
 	public Product[] search(String name) {
@@ -48,6 +49,18 @@ public class ProductModelImpl extends AbstractModel implements ProductModel{
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public Product findById(int id) {
+		
+		for(var product : data) {
+			if(product.id() == id) {
+				return product;
+			}
+		}
+	
+		throw new BusinessException("Please enter valid product id.");
 	}
 
 }

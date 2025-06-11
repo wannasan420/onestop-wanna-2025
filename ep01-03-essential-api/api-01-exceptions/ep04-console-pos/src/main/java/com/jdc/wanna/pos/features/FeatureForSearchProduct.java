@@ -1,11 +1,9 @@
 package com.jdc.wanna.pos.features;
 
 import com.jdc.wanna.pos.model.ProductModel;
-import com.jdc.wanna.pos.model.component.ProductTableModelAdaptor;
-import com.jdc.wanna.pos.model.output.Product;
+import com.jdc.wanna.pos.utils.ProductTableHelper;
 import com.wanna.console.app.AbstractFeature;
 import com.wanna.console.app.UserInputs;
-import com.wanna.console.app.component.TableView;
 
 public class FeatureForSearchProduct extends AbstractFeature{
 
@@ -21,9 +19,11 @@ public class FeatureForSearchProduct extends AbstractFeature{
 		
 		var products = ProductModel.getInstance().search(name);
 		
-		var adaptor = new ProductTableModelAdaptor(products);
-		var table = new TableView(adaptor);
+		var table = ProductTableHelper.getTableView(products);
+		
 		table.draw();
 	}
+ 
+	
 
 }

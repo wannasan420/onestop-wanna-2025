@@ -22,7 +22,7 @@ public abstract class AbstractModel {
 			for(int i = 0 ; i < messages.length ; i++) {
 				messages[i] = result.getErrors()[i].getMessage();
 			}
-			throw new ValidationException(messages);
+			throw new ValidationException(messages); 
 		}
 	}
 }
