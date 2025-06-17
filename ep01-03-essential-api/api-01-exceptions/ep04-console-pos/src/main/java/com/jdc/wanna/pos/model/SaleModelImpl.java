@@ -1,16 +1,24 @@
 package com.jdc.wanna.pos.model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 
 import com.jdc.wanna.pos.model.input.SaleItem;
 import com.jdc.wanna.pos.model.output.Sale;
+import com.jdc.wanna.pos.model.storage.SaleStorage;
 import com.wanna.console.app.exceptions.BusinessException;
+import com.wanna.console.app.exceptions.ValidationException;
 import com.wanna.console.app.utils.FormatUtils;
 
-public class SaleModelImpl implements SaleModel{
+public class SaleModelImpl extends AbstractModel implements SaleModel{
 
+	private static final String FILE_NAME = "sales.obj";
 	private static SaleModel instance;
 	private static int ID;
 	
@@ -21,13 +29,57 @@ public class SaleModelImpl implements SaleModel{
 		}
 		return instance;
 	}
+	
+	public SaleModelImpl() {
+		try(var input = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+			
+			var result = input.readObject();
+			if(null != result && result instanceof SaleStorage(var id, var data)) {
+				ID = id;
+				this.sales = data;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 	@Override
 	public Sale create(SaleItem[] cart) {
 		
+		//validate(cart);
 		var sale = new Sale(++ID, LocalDateTime.now(), cart);
 		sales = Arrays.copyOf(sales, sales.length + 1);
 		sales[sales.length - 1] = sale;
+		
+		try(var output = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+			
+			output.writeObject(new SaleStorage(ID, sales));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return sale;
+	}
+	private void validate(SaleItem[] cart) {
+		if(null == cart || cart.length == 0) {
+			throw new BusinessException("Please add items to cart.");
+		}
+		
+		String [] messages = {};
+		
+		for(var item : cart) {
+			try {
+				super.validate(item);
+			} catch (ValidationException e) {
+				for(var message : e.getMessages()) {
+					messages = Arrays.copyOf(messages, messages.length + 1);
+					messages[messages.length - 1] = message;
+				}
+			}
+		}
+		
+		if(messages.length > 0) {
+			throw new ValidationException(messages);
+		}
 	}
 
 	@Override
@@ -42,16 +94,22 @@ public class SaleModelImpl implements SaleModel{
 
 	@Override
 	public Sale[] findByDate(String dateValue) {
-		Sale[] result = {};
-		var date = LocalDate.parse(dateValue,FormatUtils.DATEF);
-		for(var sale : sales) {
-			if(sale.saleAt().toLocalDate().equals(date)) {
-				result = Arrays.copyOf(result, result.length + 1);
-				result[result.length-1] = sale;
+		
+		try {
+			Sale[] result = {};
+			var date = (null == dateValue || dateValue.isBlank()) ? LocalDate.now() : LocalDate.parse(dateValue,FormatUtils.DATEF);
+			for(var sale : sales) {
+				if(sale.saleAt().toLocalDate().equals(date)) {
+					result = Arrays.copyOf(result, result.length + 1);
+					result[result.length-1] = sale;
+				}
 			}
+			
+			return result;
+		} catch (DateTimeParseException e) {
+			throw new BusinessException("Please enter date with yyyy-MM-dd format.");
 		}
 		
-		return result;
 	}
 
 }

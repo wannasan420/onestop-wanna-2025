@@ -11,13 +11,14 @@ public abstract class AbstractModel {
 		validator = Validator.getInstance();
 	}
 	
-	protected void validate(Object data) {
+	//this class is changed to public static because teacher was wrong about validating saleItem
+	public static void validate(Object data) {
 		
 		var result = validator.validate(data);
 		
 		if(result.hasErrors()) {
 			
-			var messages = new String[] {};
+			var messages = new String[result.getErrors().length];
 			
 			for(int i = 0 ; i < messages.length ; i++) {
 				messages[i] = result.getErrors()[i].getMessage();

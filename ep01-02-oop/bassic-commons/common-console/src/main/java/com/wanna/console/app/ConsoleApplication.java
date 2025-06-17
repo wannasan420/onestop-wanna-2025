@@ -17,6 +17,7 @@ public class ConsoleApplication {
 		showMessage("Welcome to %s ".formatted(AppName));
 		
 		boolean skipAsking;
+		
 		do {
 			skipAsking = false;
 			
@@ -38,14 +39,15 @@ public class ConsoleApplication {
 			
 		}while(skipAsking || AskToDoAgain());
 		
-		showMessage("See You Again. ");
+		showMessage("See You Again. ");	
+	
 	}
 	
 	private AbstractFeature getUserSelectedFeatures() {
 		
 		try {
 			System.out.println("Please select menu : ");
-			
+			 
 			for(var feature : features) {
 				 
 				feature.showMenu();   

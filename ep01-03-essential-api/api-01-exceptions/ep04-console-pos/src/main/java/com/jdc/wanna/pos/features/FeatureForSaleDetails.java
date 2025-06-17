@@ -4,6 +4,7 @@ import com.jdc.wanna.pos.model.SaleModel;
 import com.jdc.wanna.pos.utils.SaleItemTableHelper;
 import com.wanna.console.app.AbstractFeature;
 import com.wanna.console.app.UserInputs;
+import com.wanna.console.app.exceptions.BusinessException;
 import com.wanna.console.app.utils.FormatUtils;
 
 public class FeatureForSaleDetails extends AbstractFeature {
@@ -17,18 +18,24 @@ public class FeatureForSaleDetails extends AbstractFeature {
 	@Override
 	public void doBusiness() {
 		
-		var id = UserInputs.readInt(SIZE,"Enter Sale ID");
-		var sale = SaleModel.getInstance().findById(id);
+		try {
+			var id = UserInputs.readInt(SIZE,"Enter Sale ID");
+			var sale = SaleModel.getInstance().findById(id);
+			
+			System.out.printf("%-14s : %s%n","Sale At",sale.saleAt().format(FormatUtils.DTTF));
+			
+			System.out.printf("%-14s : %s%n","Items",sale.getItemCount());
+			
+			System.out.printf("%-14s : %s%n","Total Amount",FormatUtils.DF.format(sale.getAllTotal()));
+			
+			System.out.println("Sale Items");
+			
+			SaleItemTableHelper.getTableView(sale.items()).draw();
+		} catch (BusinessException e) {
+			System.out.printf("Error : %s%n%n",e.getMessage());
+			doBusiness();
+		}
 		
-		System.out.printf("%-14s : %s%n","Sale At",sale.saleAt().format(FormatUtils.DTTF));
-		
-		System.out.printf("%-14s : %s%n","Items",sale.getItemCount());
-		
-		System.out.printf("%-14s : %s%n","Total Amount",FormatUtils.DF.format(sale.getAllTotal()));
-		
-		System.out.println("Sale Items");
-		
-		SaleItemTableHelper.getTableView(sale.items()).draw();
 	}
 
 }

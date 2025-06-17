@@ -16,7 +16,7 @@ public abstract class AbstractFeature {
 	}
 
 	public String getName() {
-		return name;
+		return name; 
 	}
 	
 	public abstract void doBusiness();

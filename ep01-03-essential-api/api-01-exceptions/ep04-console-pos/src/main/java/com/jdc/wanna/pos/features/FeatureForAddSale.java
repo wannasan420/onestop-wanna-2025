@@ -1,7 +1,7 @@
 package com.jdc.wanna.pos.features;
 
 import java.util.Arrays;
-
+import static com.jdc.wanna.pos.model.AbstractModel.validate;
 import com.jdc.wanna.pos.model.ProductModel;
 import com.jdc.wanna.pos.model.SaleModel;
 import com.jdc.wanna.pos.model.input.SaleItem;
@@ -9,6 +9,8 @@ import com.jdc.wanna.pos.utils.ProductTableHelper;
 import com.wanna.console.app.AbstractFeature;
 import com.wanna.console.app.UserInputs;
 import com.wanna.console.app.exceptions.BusinessException;
+import com.wanna.console.app.exceptions.ConsoleAppException;
+import com.wanna.console.app.exceptions.ValidationException;
 import com.wanna.console.app.utils.FormatUtils;
 
 public class FeatureForAddSale extends AbstractFeature {
@@ -21,7 +23,7 @@ public class FeatureForAddSale extends AbstractFeature {
 
 	@Override
 	public void doBusiness() { 
-		
+		 
 		SaleItem[] cart = {};
 		
 		System.out.println("Please select products.");
@@ -43,20 +45,25 @@ public class FeatureForAddSale extends AbstractFeature {
 				
 				var quantity = UserInputs.readInt(SIZE,"Quantity");
 				
-				var item = new SaleItem(product,quantity);
-				cart = addItem(item,cart);
-				
+				var item = new SaleItem(product, quantity);
+				validate(item); 
+				cart = addItem(item, cart);
 				System.out.printf("%-10s : %s%n%n","Total",FormatUtils.DF.format(item.getTotal()));
-				
-				
 				System.out.println();
-			} catch (BusinessException e) {
-				System.out.printf("%s : %s%n%n","Error",e.getMessage());
+			}catch (BusinessException | ConsoleAppException e) {
+				System.out.printf("Error : %s%n%n",e.getMessage());
 				skipAsking = true;
-			} 
-			
+			}catch(ValidationException e) {
+				System.out.println();
+				System.out.println("Validation Error ");
+				for(var message : e.getMessages()) {
+					System.out.println(message);
+				}
+				System.out.println();
+				skipAsking = true;
+
+			}
 		} while (skipAsking || !isEmptyInCart());
-		
 		if(cart.length > 0) {
 			
 			var sale = SaleModel.getInstance().create(cart);
@@ -64,8 +71,9 @@ public class FeatureForAddSale extends AbstractFeature {
 			
 			System.out.printf("%-10s : %s%n","Sale ID",sale.id());
 			System.out.printf("%-10s : %s%n","Item Amout",sale.getItemCount());
-			System.out.printf("%-10s : %s%n","All Total",sale.getAllTotal());
+			System.out.printf("%-10s : %s%n","All Total",FormatUtils.DF.format(sale.getAllTotal()));
 		}
+		
 	}
 
 	private SaleItem[] addItem(SaleItem item, SaleItem[] cart) {

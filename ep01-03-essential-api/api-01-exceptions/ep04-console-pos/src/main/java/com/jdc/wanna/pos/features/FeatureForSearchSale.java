@@ -4,6 +4,7 @@ import com.jdc.wanna.pos.model.SaleModel;
 import com.jdc.wanna.pos.utils.SaleHistoryTableHelper;
 import com.wanna.console.app.AbstractFeature;
 import com.wanna.console.app.UserInputs;
+import com.wanna.console.app.exceptions.BusinessException;
 
 public class FeatureForSearchSale extends AbstractFeature {
 
@@ -14,12 +15,20 @@ public class FeatureForSearchSale extends AbstractFeature {
 	@Override
 	public void doBusiness() {
 		
-		var date = UserInputs.readString("Enter Date");
+		try {
+			var date = UserInputs.readString("Enter Date");
+			
+			
+			var sales = SaleModel.getInstance().findByDate(date);
+			
+			SaleHistoryTableHelper.getTableView(sales).draw();
+			
+		} catch (BusinessException e) {
+			System.out.printf("Error : %s%n%n",e.getMessage());
+			doBusiness();
+		}
 		
 		
-		var sales = SaleModel.getInstance().findByDate(date);
-		
-		SaleHistoryTableHelper.getTableView(sales).draw();
 	}
 
 }
