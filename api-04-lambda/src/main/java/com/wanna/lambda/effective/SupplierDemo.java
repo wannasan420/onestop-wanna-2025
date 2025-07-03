@@ -12,3 +12,4 @@ public class SupplierDemo {
 		System.out.println(str.orElseGet(() -> "Default Value"));
 	}
 }
+ 

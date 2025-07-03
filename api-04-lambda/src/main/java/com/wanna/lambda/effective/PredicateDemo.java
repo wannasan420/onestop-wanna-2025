@@ -14,7 +14,7 @@ public class PredicateDemo {
 		printIfTrue(list , greaterThanFour);
 		System.out.println("----");
 		printIfTrue(list, evenNumber);
-		System.out.println("----");
+		System.out.println("----"); 
 		printIfTrue(list, evenNumber.negate().and(greaterThanFour.negate()));
 	}
 	

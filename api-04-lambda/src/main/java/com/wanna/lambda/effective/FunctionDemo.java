@@ -10,7 +10,7 @@ public class FunctionDemo {
 	public static void main(String[] args) {
 		
 		Function<Integer,String> countA = count -> {
-			var sb = new StringBuffer();
+			var sb = new StringBuffer(); 
 			for(var i = 0; i < count; i++) {
 				sb.append("A");
 			}
@@ -22,7 +22,7 @@ public class FunctionDemo {
 			return String.valueOf(twice);
 		};
 		
-		UnaryOperator<String> toLowerCase = str -> str.toLowerCase();
+		UnaryOperator<String> toLowerCase = str -> str.toLowerCase(); 
 		
 		var result = convert(List.of(1,2,3,4,5), countA);
 		result.forEach(data -> System.out.println(data));
