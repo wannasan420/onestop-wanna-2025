@@ -1,7 +1,9 @@
 package com.jdc.wanna.pos.features;
 
-import java.util.Arrays;
 import static com.jdc.wanna.pos.model.AbstractModel.validate;
+
+import java.util.Arrays;
+
 import com.jdc.wanna.pos.model.ProductModel;
 import com.jdc.wanna.pos.model.SaleModel;
 import com.jdc.wanna.pos.model.input.SaleItem;

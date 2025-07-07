@@ -26,6 +26,6 @@ public class ProductTableHelper {
 		
 		var data =  new TableViewData(columns,headers,contents);
 		 
-		return new TableView(new TableViewModelBase(data));
+		return new TableView(new TableViewModelBase(data)); 
 	}
 }
