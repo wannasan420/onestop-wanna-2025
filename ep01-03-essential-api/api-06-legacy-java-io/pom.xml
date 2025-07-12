@@ -14,7 +14,12 @@
 			<version>5.10.3</version>
 			<scope>test</scope>
 		</dependency>
-	
+
+		<dependency>
+			<groupId>com.jdc.practice</groupId>
+			<artifactId>api-02-generics</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
