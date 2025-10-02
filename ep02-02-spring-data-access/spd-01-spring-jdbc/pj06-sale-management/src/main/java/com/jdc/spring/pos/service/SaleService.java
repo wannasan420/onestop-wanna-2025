@@ -13,5 +13,5 @@ public interface SaleService {
 	
 	List<SaleInfo> search(String salePerson, LocalDate from, LocalDate to);
 	
-	SaleDetails findById();
+	SaleDetails findById(int id);
 }
