@@ -14,7 +14,7 @@ import com.jdc.spring.pos.domain.output.SaleInfo;
 import com.jdc.spring.pos.repo.SaleHistoryRepo;
 import com.jdc.spring.pos.repo.SaleProductRepo;
 
-public class SaleServiceImpl implements SaleService{
+public class SaleServiceImpl implements SaleService {
 	@Autowired
 	private SaleHistoryRepo saleHistoryRepo;
 	@Autowired
@@ -22,35 +22,35 @@ public class SaleServiceImpl implements SaleService{
 
 	@Override
 	public int ChectOut(ShoppingCart cart) {
-		
+
 		validate(cart);
-		
+
 		var saleId = saleHistoryRepo.create(cart.getSalePerson());
-		for(var item: cart.getItems()) {
+		for (var item : cart.getItems()) {
 			saleProductRepo.create(saleId, item);
 		}
-		
+
 		return saleId;
 	}
 
-	private void validate(ShoppingCart cart) {
-		if(null == cart) {
+	private void validate(ShoppingCart cart) { 
+		if (null == cart) {
 			throw new PosBusinessException("Cart must not be null.");
 		}
-		if(!StringUtils.hasLength(cart.getSalePerson())) {
+		if (!StringUtils.hasLength(cart.getSalePerson())) {
 			throw new PosBusinessException("Please enter sale person name.");
 		}
-		if(null == cart.getItems() && !cart.getItems().isEmpty()) {
+		if (null == cart.getItems() && !cart.getItems().isEmpty()) {
 			throw new PosBusinessException("Please enter sale items.");
 		}
-		for(var item : cart.getItems()) {
-			if(!StringUtils.hasLength(item.getProductCode())) {
+		for (var item : cart.getItems()) {
+			if (!StringUtils.hasLength(item.getProductCode())) {
 				throw new PosBusinessException("Please enter product code.");
 			}
-			if(item.getUnitPrice() <= 0) {
+			if (item.getUnitPrice() <= 0) {
 				throw new PosBusinessException("Please enter unit price.");
 			}
-			if(item.getQuantity() <= 0) {
+			if (item.getQuantity() <= 0) {
 				throw new PosBusinessException("Please enter quantity.");
 			}
 		}
@@ -58,17 +58,18 @@ public class SaleServiceImpl implements SaleService{
 
 	@Override
 	public List<SaleInfo> search(String salePerson, LocalDate from, LocalDate to) {
-	
-		return saleHistoryRepo.search(salePerson,from,to);
+
+		return saleHistoryRepo.search(salePerson, from, to);
 	}
 
 	@Override
 	public SaleDetails findById(int id) {
-		var saleInfo = saleHistoryRepo.findById(id);
-		
+		var saleInfo = saleHistoryRepo.findById(id)
+				.orElseThrow(() -> new PosBusinessException("Invalid sale Id!"));
+
 		var items = saleProductRepo.findBySaleId(id);
-		
-		return SaleDetails.from(saleInfo,items);
+
+		return SaleDetails.from(saleInfo, items);
 	}
 
 }
