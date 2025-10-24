@@ -21,8 +21,8 @@ public class ProductRepoImpl implements ProductRepo{
 	@Override
 	public Optional<ProductDto> findByCode(String code) {
 		
-		return template.query("select * from PRODUCT where code = :productCode",
-				Map.of("productCode",code), rowMapper)
+		return template.query("select * from PRODUCT where code = :id",
+				Map.of("id",code), rowMapper)
 				.stream().findAny();
 	}
 

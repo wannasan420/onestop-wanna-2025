@@ -13,17 +13,15 @@ public class ProductServiceImpl implements ProductService{
 
 	@Autowired
 	private ProductRepo repo;
-	
+
 	@Override
 	public ProductDto findByCode(String code) {
 		
-		if( !StringUtils.hasLength(code)) {
-			throw new PosBusinessException("Please enter product code! ");
+		if(!StringUtils.hasLength(code)) {
+			throw new PosBusinessException("Please enter product code.");
 		}
 		
-		repo.findByCode(code);
-		
-		return null;
+		return repo.findByCode(code)
+				.orElseThrow(() -> new PosBusinessException("Invalid product code."));		
 	}
-
 }

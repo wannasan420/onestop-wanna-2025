@@ -31,7 +31,7 @@ public class SaleServiceImpl implements SaleService {
 		}
 
 		return saleId;
-	}
+	} 
 
 	private void validate(ShoppingCart cart) { 
 		if (null == cart) {
