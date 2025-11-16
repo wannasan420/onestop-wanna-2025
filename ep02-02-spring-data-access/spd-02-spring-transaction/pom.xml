@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jdc.online</groupId>
-	<artifactId>spd-01-spring-jdbc</artifactId>
+	<artifactId>spd-02-spring-transaction</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -12,15 +12,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.5</version> <!-- Latest -->
 	</parent>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -32,13 +24,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>pj01-using-pure-jdbc</module>
-		<module>pj02-spring-jdbc-xml</module>
-		<module>pj03-spring-jdbc-java</module>
-		<module>pj04-spring-jdbc-boots</module>
-		<module>pj05-spring-jdbc-template</module>
-		<module>pj06-sale-management</module>
-		<module>pj07-simple-jdbc-insert</module>
-	</modules>
 </project>

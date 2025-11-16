@@ -9,7 +9,7 @@ import com.jdc.spring.pos.domain.output.SaleInfo;
 
 public interface SaleService {
 
-	int ChectOut(ShoppingCart cart);
+	int checkOut(ShoppingCart cart);
 	
 	List<SaleInfo> search(String salePerson, LocalDate from, LocalDate to);
 	

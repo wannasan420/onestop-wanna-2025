@@ -24,11 +24,11 @@ public class SaleHistoryRepoImpl implements SaleHistoryRepo{
 
 	@Value("${sql.sale.history.select}")
 	private String selectSql;
-	@Value("${sql.sale.history.insert}")
+	@Value("${sql.sale.history.insert}") 
 	private String insertSql;
 	
 	@Autowired
-	private NamedParameterJdbcTemplate template;
+	private NamedParameterJdbcTemplate template; 
 	private RowMapper<SaleInfo> rowMapper = new DataClassRowMapper<>(SaleInfo.class);
 	
 	@Override
