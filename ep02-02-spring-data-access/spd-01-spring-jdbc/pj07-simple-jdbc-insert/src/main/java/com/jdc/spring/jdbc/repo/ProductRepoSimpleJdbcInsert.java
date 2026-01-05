@@ -26,7 +26,7 @@ public class ProductRepoSimpleJdbcInsert implements ProductRepo {
 		template = new JdbcTemplate(dataSource);
 		insert = new SimpleJdbcInsert(dataSource)
 				.withTableName("product")
-				.usingGeneratedKeyColumns("id");
+				.usingGeneratedKeyColumns("id"); 
 	}
 	
 	@Override

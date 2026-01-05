@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+ <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version> <!-- Latest -->
+		<version>3.5.7</version> <!-- Latest -->
 	</parent>
 	
 	<build>
@@ -24,4 +24,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	<modules>
+		<module>pj01-spring-transaction-xml</module>
+		<module>spring-transaction-commons</module>
+		<module>pj05-programattic-transaction-management</module>
+	</modules>
 </project>
